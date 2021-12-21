@@ -1,7 +1,8 @@
 # cookie-stand-admin
 
-[PR LINK](https://github.com/salsabilmislat/cookie-stand-admin/pull/1)
+[PR LINK lab 37](https://github.com/salsabilmislat/cookie-stand-admin/pull/1)
 
+[PR LINK lab 38](https://github.com/salsabilmislat/cookie-stand-admin/pull/2)
 
 
 ## Next.js + Tailwind CSS Example
