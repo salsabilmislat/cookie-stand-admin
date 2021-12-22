@@ -1,7 +1,7 @@
 const Footer=(props)=> {
     return (
-        <footer className="font-bold flex items-center w-full p-4 bg-emerald-400">
-           <h3>{props.cookieStand.length} Locations World Wide</h3> 
+        <footer className="font-bold w-full p-4 bg-emerald-400">
+           <p className="text-center">{props.cookieStand.length} Locations World Wide</p> 
         </footer>
 
     )}
