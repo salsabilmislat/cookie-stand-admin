@@ -115,9 +115,9 @@ const Main = (props) => {
             url: `https://cookie-stand-api-salsabil.herokuapp.com/api/v1/cookie_stands/${id}`,
             headers: { "Authorization": `Bearer ${props.token}` }
         }
-        await axios(config)
+        // await axios(config)
         let result = cookieStand.filter(cookie => cookie.id != id)
-        axios(configDelete);
+        axios(config);
         setCookieStand(result)
     }
 
