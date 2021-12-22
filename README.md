@@ -4,6 +4,7 @@
 
 [PR LINK lab 38](https://github.com/salsabilmislat/cookie-stand-admin/pull/2)
 
+[PR LINK lab 39](https://github.com/salsabilmislat/cookie-stand-admin/pull/3)
 
 ## Next.js + Tailwind CSS Example
 
