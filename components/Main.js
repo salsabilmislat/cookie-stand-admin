@@ -20,34 +20,51 @@ const Main = (props) => {
         if (props.token) {
             getRepliesFromAPI();
         }
-    }, [props.token]);
+    }, []);
 
     let allData = []
     const getRepliesFromAPI = async () => {
         console.log("hiii");
 
         const config = { headers: { 'Authorization': 'Bearer ' + props.token } };
-        const answers = await axios.get(responsesEndPoint, config);
-        console.log("hiiiia", answers.data);
+        axios.get("https://cookie-stand-api-salsabil.herokuapp.com/api/v1/cookie_stands/", config).then(answers => {
+            console.log("hiiiia", answers.data);
 
-        const mappedData = answers.data.map((item) => {
-            const storeData = {
-                id: item.id,
-                location: item.location,
-                average_cookies_per_sale: item.average_cookies_per_sale,
-                minimum_customers_per_hour: item.minimum_customers_per_hour,
-                maximum_customers_per_hour: item.maximum_customers_per_hour,
-                hour_sales: item.hourly_sales,
-                // totalperday: cal_total_per_day(item.hour_sales),
+            const mappedData = answers.data.map((item) => {
+                const storeData = {
+                    id: item.id,
+                    location: item.location,
+                    average_cookies_per_sale: item.average_cookies_per_sale,
+                    minimum_customers_per_hour: item.minimum_customers_per_hour,
+                    maximum_customers_per_hour: item.maximum_customers_per_hour,
+                    hour_sales: item.hourly_sales,
+                    // totalperday: cal_total_per_day(item.hour_sales),
 
+                }
+                allData.push(storeData)
+
+                return storeData
+            });
+            let arr1 = [];
+            let megaSum = 0;
+            for (let i = 0; i < hours.length; i++) {
+                let sum = 0;
+
+                for (let j = 0; j < answers.data.length; j++) {
+                    sum += answers.data[j].hourly_sales[i];
+                }
+
+                megaSum += sum;
+                arr1.push(sum);
             }
-            allData.push(storeData)
-            setCookieStand([...cookieStand, ...allData]);
-            return storeData
+            // setCookieStand(answers.data);
+
+            setsum([...arr1, megaSum]);
+            setCookieStand(allData);
+            // setCookieStand([...cookieStand,answers.data]);
+            // setCookieStand(JSON.stringify(formCookies));
         });
 
-
-        // setCookieStand(JSON.stringify(formCookies));
 
     }
     const formCookies = (e) => {
@@ -78,7 +95,7 @@ const Main = (props) => {
 
         }
         store_data.total = count
-        setCookieStand([...cookieStand, store_data])
+        // setCookieStand([...cookieStand, store_data])
 
         let total_sum = final_sum.map((i, idx) => {
             if (idx === final_sum.length - 1) {
@@ -105,7 +122,7 @@ const Main = (props) => {
             }
         }
 
-        axios(configPost)
+        axios(configPost).then(res => getRepliesFromAPI())
 
     };
 
@@ -116,9 +133,9 @@ const Main = (props) => {
             headers: { "Authorization": `Bearer ${props.token}` }
         }
         // await axios(config)
-        let result = cookieStand.filter(cookie => cookie.id != id)
-        axios(config);
-        setCookieStand(result)
+        // let result = cookieStand.filter(cookie => cookie.id != id)
+        axios(config).then(res => getRepliesFromAPI())
+        // setCookieStand(result)
     }
 
 

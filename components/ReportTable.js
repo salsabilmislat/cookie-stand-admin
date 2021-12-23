@@ -12,17 +12,17 @@ export default function Report(props) {
             <table className="mt-20 mb-20">
                 <thead className=''>
                     <tr className='bg-emerald-500'>
-                    <th className='px-20 '>Location</th>
-                    {
-                        props.hours.map(i => {
-                            return (
+                        <th className='px-20 '>Location</th>
+                        {
+                            props.hours.map(i => {
+                                return (
 
-                                <th className='px-2 '>{i} </th>
+                                    <th className='px-2 '>{i} </th>
+                                )
+                            }
                             )
                         }
-                        )
-                    }
-                    <th className='px-10 '>Totals</th>
+                        <th className='px-10 '>Totals</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,9 +30,9 @@ export default function Report(props) {
                         props.cookieStand.map((store_data, idx) => {
                             const e =
                                 <>
-                                    <td className='px-4 border border-black' >{store_data.location}<button className="justify-center w-8 h-10 float-right text-red-900" onClick={() => { props.deleteHandler(store_data.id) }}><svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 "  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                </svg></button></td>
+                                    <td className='px-4 border border-black' >{store_data.location}<button className="justify-center w-8 h-10 float-right text-red-900" onClick={() => { props.deleteHandler(store_data.id) }}><svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg></button></td>
                                     {
                                         store_data.hour_sales.map(i => {
                                             return (
@@ -40,7 +40,8 @@ export default function Report(props) {
                                             )
                                         })
                                     }
-                                    <td className='border border-black'>{store_data.total}</td>
+                                    {/* <td className='border border-black'>{store_data.total}</td> */}
+                                    <td className="px-2 border border-black text-center text-center">{store_data.hour_sales.reduce((sum, val) => sum + val, 0)}</td>
                                 </>
 
                             if (idx % 2 == 0) {
