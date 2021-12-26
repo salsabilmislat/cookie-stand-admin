@@ -4,7 +4,7 @@ import Main from '../components/Main'
 // import Head from '../components/Head'
 import LoginForm from '../components/LoginForm'
 import { useState } from 'react';
-const baseUrl = 'https://cookie-stand-api-salsabil.herokuapp.com/';
+const baseUrl = process.env.NEXT_PUBLIC_COOKIE_STAND;
 const tokenUrl = baseUrl + 'api/token/';
 import axios from 'axios';
 export default function Home() {
