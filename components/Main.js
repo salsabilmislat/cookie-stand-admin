@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import Head from '../components/Head';
 import axios from 'axios';
 
-const baseUrl = 'https://cookie-stand-api-salsabil.herokuapp.com/';
+const baseUrl = process.env.NEXT_PUBLIC_COOKIE_STAND;
 const responsesEndPoint = baseUrl + 'api/v1/cookie_stands/';
 
 const Main = (props) => {
